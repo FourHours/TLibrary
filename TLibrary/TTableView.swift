@@ -59,15 +59,15 @@ public extension UITableView {
         public static let cellClassName = "cellClassName"
         public static let cellSeparatorStyle = "cellSeparatorStyle"
         public static let cellSpacingHeight = "cellSpacingHeight"
-        
+        public static let cellSelectionStyle = "cellSelectionStyle"
     }
     
     public enum EventName {
         public static let onSelection = "onSelection"
 
     }
-    public enum TableCellType {
-        case Value1
+    public enum TableCellType: Int {
+        case Value1 = 1
         case Nib
         case Dynamic
     }
@@ -76,78 +76,106 @@ public extension UITableView {
 public typealias TSection = TTableDataSource.TableSection
 public typealias TTableRowModel = Mappable
 
-public final class TUITableView: UITableView, TEventEmitter, TMethodChain {
 
+private struct AssociatedKey {
+    static var datasource = "datasource"
+    static var validated = "validated"
+
+}
+
+public final class TUITableView: UITableView, TEventEmitter, TMethodChain {
+    var tableModel: TTableDataSource { // cat is *effectively* a stored property
+        get {
+            return AssociatedObject.get(base: self, key: &AssociatedKey.datasource)
+            { return TTableDataSource() } // Set the initial value of the var
+        }
+        set { AssociatedObject.set(base: self, key: &AssociatedKey.datasource, value: newValue) }
+    }
+    
+    
+    public func validate() {
+        //1. datasource
+        if let dsData = properties[TUITableView.PropertyName.dataSource] {
+            tableModel = dsData.tableDataSource()
+        }
+        else {
+            tableModel = TTableDataSource()
+        }
+        
+        //2. cellClassName
+        assert(properties[UITableView.PropertyName.cellClassName] != nil, "please config cellClassName first")
+        
+        //3. cellType
+        assert(properties[UITableView.PropertyName.cellType] != nil, "please config cellType first")
+
+    }
+    
     public func end() {
+        
+        validate() //"Please call validate methoid first")
+        
         self.dataSource = self
         self.delegate = self
         
-        let cellType = properties[UITableView.PropertyName.cellType] as! UITableView.TableCellType
-        
+        // Validated
+        let cellType = UITableView.TableCellType(rawValue: (properties[UITableView.PropertyName.cellType]!.int()))!
+        let cellItentifierName = properties[UITableView.PropertyName.cellClassName]!.string()
+
         switch cellType {
         case .Value1:
-            self.register(UITableViewCell.self, forCellReuseIdentifier: cellItentifier())
+            self.register(UITableViewCell.self, forCellReuseIdentifier: cellItentifierName)
         case .Nib:
-            let name = properties[UITableView.PropertyName.cellClassName] as! String
-            self.register(UINib(nibName: name, bundle: nil), forCellReuseIdentifier: name)
+            if let name = properties[UITableView.PropertyName.cellClassName]?.string() {
+                self.register(UINib(nibName: name, bundle: nil), forCellReuseIdentifier: name)
+
+            }
+            
         default: break
         }
         
     }
-
-    func getDataSource() -> TTableDataSource? {
-        let ds = properties[UITableView.PropertyName.dataSource] as! TTableDataSource
-        return ds
-    }
-
 }
 
 extension TUITableView: UITableViewDataSource {
     public func numberOfSections(in _: UITableView) -> Int {
-        return (getDataSource()?.numberOfSections())!
+        return tableModel.numberOfSections()
     }
 
     public func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let ds = getDataSource()
-            else { return 0 }
-        
-        if ds.sections.count > 0 {
-            return (ds[section].rows?.count)!
+
+        if tableModel.sections.count > 0 {
+            return (tableModel[section].rows?.count)!
         }
         else {
             return 0
         }
-
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Validated
+        let cellType = UITableView.TableCellType(rawValue: (properties[UITableView.PropertyName.cellType]!.int()))!
+        let cellItentifierName = properties[UITableView.PropertyName.cellClassName]!.string()
 
-        let cellType = properties[UITableView.PropertyName.cellType] as! UITableView.TableCellType
+        
         switch cellType {
         case .Value1:
-            let tableCell = TBasicTableCell(style: UITableViewCellStyle.value1, reuseIdentifier: cellItentifier())
-            tableCell.configure(row: (getDataSource()?[indexPath])!)
+            let tableCell = TBasicTableCell(style: UITableViewCellStyle.value1, reuseIdentifier: cellItentifierName)
+            tableCell.configure(row: tableModel[indexPath])
             return tableCell
 
         case .Nib, .Dynamic:
-            let name = properties[UITableView.PropertyName.cellClassName] as! String
-
-            let cell = tableView.dequeueReusableCell(withIdentifier: name, for: indexPath) as! TTableCellDatasource
-            cell.configure(row: (getDataSource()?[indexPath])!)
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellItentifierName, for: indexPath) as! TTableCellDatasource
+            
+            cell.configure(row: tableModel[indexPath])
             return cell as! UITableViewCell
         }
-    }
-
-
-    public func cellItentifier() -> String {
-        return String(describing: type(of: self))
     }
 }
 
 extension TUITableView: UITableViewDelegate {
     public func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let ds = properties[UITableView.PropertyName.dataSource] as! TTableDataSource
-        emit(UITableView.EventName.onSelection, data: ds[indexPath] )
+        // Validated
+        emit(UITableView.EventName.onSelection, data: tableModel[indexPath] )
     }
 }
 

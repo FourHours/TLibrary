@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol TMethodChain : class {
-    func with(_ name: String, value: Any) -> Self
+    func with(_ name: String, value: TAny) -> Self
     func end() // Silence warning
 }
 
@@ -18,20 +18,21 @@ private struct AssociatedKey {
 }
 
 public extension TMethodChain {
-    var properties: [String: Any] { // cat is *effectively* a stored property
+    var properties: [String: TAny] { // cat is *effectively* a stored property
         get {
             return AssociatedObject.get(base: self, key: &AssociatedKey.properties)
-            { return [String: [Any]]() } // Set the initial value of the var
+            { return [String: TAny]() } // Set the initial value of the var
         }
         set { AssociatedObject.set(base: self, key: &AssociatedKey.properties, value: newValue) }
     }
     
-    public func with(_ name: String, value: Any) -> Self{
+    public func with(_ name: String, value: TAny) -> Self{
         properties[name] = value
         return self
     }
     
     public func end() {
+        assert(false, "must implement by the target class")
         return
     }
 }

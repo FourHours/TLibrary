@@ -24,7 +24,12 @@ public extension UILabel {
 public final class TUILabel: UILabel, TMethodChain {
     public func end() {
         for(key, value) in properties {
-            self.setValue(value, forKey: key)
+            switch key {
+            case UILabel.PropertyName.textColor:
+                self.textColor = value.color()
+            default:
+                break
+            }
         }
     }
 }

@@ -15,8 +15,11 @@ public protocol TTableCellDatasource: class {
 
 public class TBasicTableCell: UITableViewCell, TTableCellDatasource {
     public func configure(row: Mappable) {
+        self.selectionStyle = .none
+        
         if let rowData = row as? TBasicTableRowModel {
             textLabel?.text = rowData.title
+            detailTextLabel?.text = rowData.detailText
         }
     }
 }

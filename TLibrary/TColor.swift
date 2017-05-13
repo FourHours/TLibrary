@@ -17,5 +17,5 @@ public enum TColor {
 public enum TFont {
     public static let headline = UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)
     public static let subhead = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
-    public static let body = UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline)
+    public static let body = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
 }

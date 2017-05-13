@@ -10,7 +10,7 @@
 		071244681EC256C400714AB1 /* TLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0712445E1EC256C300714AB1 /* TLibrary.framework */; };
 		0712446D1EC256C400714AB1 /* TLibraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712446C1EC256C400714AB1 /* TLibraryTests.swift */; };
 		0712446F1EC256C400714AB1 /* TLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 071244611EC256C300714AB1 /* TLibrary.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		071244861EC257BE00714AB1 /* TBasicTableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071244781EC257BE00714AB1 /* TBasicTableRow.swift */; };
+		071244861EC257BE00714AB1 /* TBasicTableRowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071244781EC257BE00714AB1 /* TBasicTableRowModel.swift */; };
 		071244871EC257BE00714AB1 /* TBundleFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071244791EC257BE00714AB1 /* TBundleFile.swift */; };
 		071244881EC257BE00714AB1 /* TColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712447A1EC257BE00714AB1 /* TColor.swift */; };
 		071244891EC257BE00714AB1 /* TCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0712447B1EC257BE00714AB1 /* TCustomTableViewCell.swift */; };
@@ -21,14 +21,15 @@
 		0712448E1EC257BE00714AB1 /* TPropertyDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071244801EC257BE00714AB1 /* TPropertyDatasource.swift */; };
 		0712448F1EC257BE00714AB1 /* TSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071244811EC257BE00714AB1 /* TSegue.swift */; };
 		071244901EC257BE00714AB1 /* TStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071244821EC257BE00714AB1 /* TStack.swift */; };
-		071244911EC257BE00714AB1 /* TTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071244831EC257BE00714AB1 /* TTableCell.swift */; };
+		071244911EC257BE00714AB1 /* TBasicTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071244831EC257BE00714AB1 /* TBasicTableCell.swift */; };
 		071244921EC257BE00714AB1 /* TTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071244841EC257BE00714AB1 /* TTableView.swift */; };
 		071244931EC257BE00714AB1 /* TView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071244851EC257BE00714AB1 /* TView.swift */; };
 		071244D91EC2660E00714AB1 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071244D81EC2660E00714AB1 /* ObjectMapper.framework */; };
 		0792C6051EC27A5700819CD3 /* TButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0792C6041EC27A5700819CD3 /* TButton.swift */; };
 		0792C6071EC6122B00819CD3 /* TEventEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0792C6061EC6122B00819CD3 /* TEventEmitter.swift */; };
 		0792C6091EC640D000819CD3 /* TAssociatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0792C6081EC640D000819CD3 /* TAssociatedObject.swift */; };
-		0792C60B1EC6449400819CD3 /* TChainable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0792C60A1EC6449400819CD3 /* TChainable.swift */; };
+		0792C60B1EC6449400819CD3 /* TMethodChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0792C60A1EC6449400819CD3 /* TMethodChain.swift */; };
+		0792C60D1EC70DB100819CD3 /* TAny.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0792C60C1EC70DB100819CD3 /* TAny.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,7 +49,7 @@
 		071244671EC256C400714AB1 /* TLibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TLibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0712446C1EC256C400714AB1 /* TLibraryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TLibraryTests.swift; sourceTree = "<group>"; };
 		0712446E1EC256C400714AB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		071244781EC257BE00714AB1 /* TBasicTableRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBasicTableRow.swift; sourceTree = "<group>"; };
+		071244781EC257BE00714AB1 /* TBasicTableRowModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBasicTableRowModel.swift; sourceTree = "<group>"; };
 		071244791EC257BE00714AB1 /* TBundleFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBundleFile.swift; sourceTree = "<group>"; };
 		0712447A1EC257BE00714AB1 /* TColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TColor.swift; sourceTree = "<group>"; };
 		0712447B1EC257BE00714AB1 /* TCustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCustomTableViewCell.swift; sourceTree = "<group>"; };
@@ -59,7 +60,7 @@
 		071244801EC257BE00714AB1 /* TPropertyDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TPropertyDatasource.swift; sourceTree = "<group>"; };
 		071244811EC257BE00714AB1 /* TSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TSegue.swift; sourceTree = "<group>"; };
 		071244821EC257BE00714AB1 /* TStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TStack.swift; sourceTree = "<group>"; };
-		071244831EC257BE00714AB1 /* TTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTableCell.swift; sourceTree = "<group>"; };
+		071244831EC257BE00714AB1 /* TBasicTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBasicTableCell.swift; sourceTree = "<group>"; };
 		071244841EC257BE00714AB1 /* TTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTableView.swift; sourceTree = "<group>"; };
 		071244851EC257BE00714AB1 /* TView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TView.swift; sourceTree = "<group>"; };
 		071244951EC25BD900714AB1 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
@@ -68,7 +69,8 @@
 		0792C6041EC27A5700819CD3 /* TButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TButton.swift; sourceTree = "<group>"; };
 		0792C6061EC6122B00819CD3 /* TEventEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEventEmitter.swift; sourceTree = "<group>"; };
 		0792C6081EC640D000819CD3 /* TAssociatedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAssociatedObject.swift; sourceTree = "<group>"; };
-		0792C60A1EC6449400819CD3 /* TChainable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TChainable.swift; sourceTree = "<group>"; };
+		0792C60A1EC6449400819CD3 /* TMethodChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMethodChain.swift; sourceTree = "<group>"; };
+		0792C60C1EC70DB100819CD3 /* TAny.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAny.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,7 +115,7 @@
 		071244601EC256C300714AB1 /* TLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				071244D21EC2627C00714AB1 /* Design */,
+				071244D21EC2627C00714AB1 /* Foundition */,
 				071244D11EC2625300714AB1 /* View */,
 				071244D01EC2624200714AB1 /* Networking */,
 				071244CF1EC2623900714AB1 /* Data */,
@@ -156,10 +158,10 @@
 			isa = PBXGroup;
 			children = (
 				071244841EC257BE00714AB1 /* TTableView.swift */,
-				071244831EC257BE00714AB1 /* TTableCell.swift */,
+				071244781EC257BE00714AB1 /* TBasicTableRowModel.swift */,
+				071244831EC257BE00714AB1 /* TBasicTableCell.swift */,
 				0712447C1EC257BE00714AB1 /* TCustomTableViewCell.xib */,
 				0712447B1EC257BE00714AB1 /* TCustomTableViewCell.swift */,
-				071244781EC257BE00714AB1 /* TBasicTableRow.swift */,
 			);
 			name = TableView;
 			sourceTree = "<group>";
@@ -194,14 +196,15 @@
 			name = View;
 			sourceTree = "<group>";
 		};
-		071244D21EC2627C00714AB1 /* Design */ = {
+		071244D21EC2627C00714AB1 /* Foundition */ = {
 			isa = PBXGroup;
 			children = (
 				0792C6061EC6122B00819CD3 /* TEventEmitter.swift */,
 				0792C6081EC640D000819CD3 /* TAssociatedObject.swift */,
-				0792C60A1EC6449400819CD3 /* TChainable.swift */,
+				0792C60A1EC6449400819CD3 /* TMethodChain.swift */,
+				0792C60C1EC70DB100819CD3 /* TAny.swift */,
 			);
-			name = Design;
+			name = Foundition;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,10 +320,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0712448E1EC257BE00714AB1 /* TPropertyDatasource.swift in Sources */,
-				071244911EC257BE00714AB1 /* TTableCell.swift in Sources */,
+				071244911EC257BE00714AB1 /* TBasicTableCell.swift in Sources */,
 				071244901EC257BE00714AB1 /* TStack.swift in Sources */,
+				0792C60D1EC70DB100819CD3 /* TAny.swift in Sources */,
 				071244871EC257BE00714AB1 /* TBundleFile.swift in Sources */,
-				071244861EC257BE00714AB1 /* TBasicTableRow.swift in Sources */,
+				071244861EC257BE00714AB1 /* TBasicTableRowModel.swift in Sources */,
 				0712448C1EC257BE00714AB1 /* THttpConnection.swift in Sources */,
 				071244931EC257BE00714AB1 /* TView.swift in Sources */,
 				071244921EC257BE00714AB1 /* TTableView.swift in Sources */,
@@ -328,7 +332,7 @@
 				071244881EC257BE00714AB1 /* TColor.swift in Sources */,
 				0712448D1EC257BE00714AB1 /* TLable.swift in Sources */,
 				071244891EC257BE00714AB1 /* TCustomTableViewCell.swift in Sources */,
-				0792C60B1EC6449400819CD3 /* TChainable.swift in Sources */,
+				0792C60B1EC6449400819CD3 /* TMethodChain.swift in Sources */,
 				0792C6051EC27A5700819CD3 /* TButton.swift in Sources */,
 				0792C6091EC640D000819CD3 /* TAssociatedObject.swift in Sources */,
 				0712448F1EC257BE00714AB1 /* TSegue.swift in Sources */,

@@ -31,7 +31,7 @@ public extension TEventEmitter {
             return AssociatedObject.get(base: self, key: &AssociatedKey.events)
             { return [String: [TEventEmitterCallback]]() } // Set the initial value of the var
         }
-        set { AssociatedObject.set(base: self,key: &AssociatedKey.events, value: newValue) }
+        set { AssociatedObject.set(base: self, key: &AssociatedKey.events, value: newValue) }
     }
     
     public func on(_ event: String, handler: @escaping TEventEmitterCallback) -> Self {
