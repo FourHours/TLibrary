@@ -11,7 +11,10 @@ import UIKit
 
 public enum TColor {
     // #333333 RGB (51,51,51)
-    public static let almostBlack = UIColor.init(red: 51.0/255.0, green: 51.0/255.0, blue: 51.0/255.0, alpha: 1)
+    public static let almostBlack = UIColor(red: 51.0/255.0, green: 51.0/255.0, blue: 51.0/255.0, alpha: 1)
+    // 204, 76, 86
+
+    public static let lightSkyBlue = UIColor(hue: 204/360.0, saturation: 76/100.0, brightness: 86/100.0, alpha: 1)
 }
 
 public enum TFont {

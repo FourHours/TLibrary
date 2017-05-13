@@ -11,6 +11,7 @@ import Foundation
 public protocol TMethodChain : class {
     func with(_ name: String, value: TAny) -> Self
     func end() // Silence warning
+    func validate()
 }
 
 private struct AssociatedKey {
@@ -31,8 +32,4 @@ public extension TMethodChain {
         return self
     }
     
-    public func end() {
-        assert(false, "must implement by the target class")
-        return
-    }
 }

@@ -21,6 +21,15 @@ public extension UIView {
 }
 
 public final class TUIView: UIView, TMethodChain {
+    public func validate() {
+        
+    }
+
+    
+    public func end() {
+        
+    }
+
     
 }
 

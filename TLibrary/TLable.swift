@@ -22,11 +22,20 @@ public extension UILabel {
 }
 
 public final class TUILabel: UILabel, TMethodChain {
+    public func validate() {
+        
+    }
+
+    
     public func end() {
         for(key, value) in properties {
             switch key {
             case UILabel.PropertyName.textColor:
                 self.textColor = value.color()
+            case UILabel.PropertyName.text:
+                self.text = value.string()
+            case UILabel.PropertyName.font:
+                self.font = value.font()
             default:
                 break
             }

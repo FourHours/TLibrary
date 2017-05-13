@@ -10,41 +10,49 @@ import Foundation
 import UIKit
 import ObjectMapper
 
-public struct TTableDataSource {
-    public struct TableSection {
-        public init(title: String, rows: [Mappable]) {
-            self.title = title
-            self.rows = rows
-        }
+public typealias TTableRowModel = Mappable
 
-        var title: String?
-        var rows: [Mappable]?
+public struct TSectionModel {
+    public init(title: String, rows: [TTableRowModel]) {
+        self.title = title
+        self.rows = rows
     }
-
-    public struct TableRow {
+    
+    var title: String
+    var rows: [Mappable]
+    
+    public func numberOfRows() -> Int {
+        return rows.count
     }
+}
 
-    var sections = [TableSection]()
+public struct TTableModel {
+
+    var sections = [TSectionModel]()
 
     public init() {}
 
-    public init(sections: [TableSection]) {
+    public init(sections: [TSectionModel]) {
         self.sections = sections
-    }
-
-    public mutating func insertSection(_ section: TableSection) {
-        sections.append(section)
     }
 
     public func numberOfSections() -> Int {
         return sections.count
     }
 
-    public subscript(indexPath: IndexPath) -> Mappable {
-        return (sections[indexPath.section].rows?[indexPath.row])!
+    public subscript(indexPath: IndexPath) -> TTableRowModel {
+        assert(indexPath.section < sections.count
+            && indexPath.row < sections[indexPath.section].numberOfRows(), "Index out of range")
+        return sections[indexPath.section].rows[indexPath.row]
+    }
+    
+    public subscript(section: Int, row: Int) -> TTableRowModel {
+        assert(section < sections.count
+            && row < sections[section].numberOfRows(), "Index out of range")
+        return sections[section].rows[row]
     }
 
-    public subscript(section: Int) -> TableSection {
+    public subscript(section: Int) -> TSectionModel {
         assert(section < sections.count, "Index out of range")
         return sections[section]
     }
@@ -73,33 +81,16 @@ public extension UITableView {
     }
 }
 
-public typealias TSection = TTableDataSource.TableSection
-public typealias TTableRowModel = Mappable
-
-
-private struct AssociatedKey {
-    static var datasource = "datasource"
-    static var validated = "validated"
-
-}
-
 public final class TUITableView: UITableView, TEventEmitter, TMethodChain {
-    var tableModel: TTableDataSource { // cat is *effectively* a stored property
-        get {
-            return AssociatedObject.get(base: self, key: &AssociatedKey.datasource)
-            { return TTableDataSource() } // Set the initial value of the var
-        }
-        set { AssociatedObject.set(base: self, key: &AssociatedKey.datasource, value: newValue) }
-    }
-    
+    var tableModel = TTableModel()
     
     public func validate() {
         //1. datasource
         if let dsData = properties[TUITableView.PropertyName.dataSource] {
-            tableModel = dsData.tableDataSource()
+            tableModel = dsData.tableModel()
         }
         else {
-            tableModel = TTableDataSource()
+            tableModel = TTableModel()
         }
         
         //2. cellClassName
@@ -142,13 +133,7 @@ extension TUITableView: UITableViewDataSource {
     }
 
     public func tableView(_: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        if tableModel.sections.count > 0 {
-            return (tableModel[section].rows?.count)!
-        }
-        else {
-            return 0
-        }
+        return tableModel[section].numberOfRows()
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -175,7 +160,7 @@ extension TUITableView: UITableViewDataSource {
 extension TUITableView: UITableViewDelegate {
     public func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Validated
-        emit(UITableView.EventName.onSelection, data: tableModel[indexPath] )
+        emit(UITableView.EventName.onSelection, data: TAny.TableRowModel(tableModel[indexPath]))
     }
 }
 

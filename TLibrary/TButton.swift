@@ -40,12 +40,17 @@ public extension UIButton {
 }
 
 public final class TUIButton: UIButton, TMethodChain, TEventEmitter {
+    public func validate() {
+        
+    }
+
+    
     public func end() {
         addTarget(self, action: #selector(self.onClick), for: UIControlEvents.touchUpInside)
     }
     
     public func onClick(sender: UIButton) {
-        emit(UIButton.EventName.onClick, data: sender)
+        emit(UIButton.EventName.onClick, data: TAny.Empty)
     }
 }
 
