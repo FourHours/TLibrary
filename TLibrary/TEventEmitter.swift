@@ -18,6 +18,7 @@ public typealias TEventEmitterCallback = (TAny) -> Void
 public protocol TEventEmitter: class {
     func on(_ event: String, handler: @escaping TEventEmitterCallback) -> Self
     func emit(_ event: String, data: TAny)
+
 } 
 
 private struct AssociatedKey {
@@ -47,8 +48,10 @@ public extension TEventEmitter {
     
     public func emit(_ event: String, data: TAny) {
         if let handlers = events[event] {
-            handlers.forEach{
-                $0(data)
+            handlers.forEach { handler in
+                DispatchQueue.main.async {
+                    handler(data)
+                }
             }
         }
     }

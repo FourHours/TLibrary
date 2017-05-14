@@ -33,6 +33,11 @@
 		07C391EF1EC75B0900830FD0 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C391EE1EC75B0900830FD0 /* SwiftyJSON.swift */; };
 		07C392311EC77E8C00830FD0 /* AZTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C392301EC77E8C00830FD0 /* AZTabBarController.swift */; };
 		07C392361EC794B000830FD0 /* TTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C392351EC794B000830FD0 /* TTabbar.swift */; };
+		07C392381EC7AA7400830FD0 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07C392371EC7AA7400830FD0 /* Realm.framework */; };
+		07C392401EC7AF4500830FD0 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07C3923F1EC7AF4500830FD0 /* RealmSwift.framework */; };
+		07D17ABC1EC82F6C0053C7C4 /* TRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D17ABB1EC82F6C0053C7C4 /* TRealm.swift */; };
+		2FA28112B99F41A494D44788 /* TDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA28EB8E002A0D9B3C768F1 /* TDispatch.swift */; };
+		2FA287045C5DC28DEA00C44F /* TBasicRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA2896C15E9B4C54DBEB009 /* TBasicRealmModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +82,11 @@
 		07C391EE1EC75B0900830FD0 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		07C392301EC77E8C00830FD0 /* AZTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AZTabBarController.swift; sourceTree = "<group>"; };
 		07C392351EC794B000830FD0 /* TTabbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTabbar.swift; sourceTree = "<group>"; };
+		07C392371EC7AA7400830FD0 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = ../iOS/Realm.framework; sourceTree = "<group>"; };
+		07C3923F1EC7AF4500830FD0 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = ../iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		07D17ABB1EC82F6C0053C7C4 /* TRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TRealm.swift; sourceTree = "<group>"; };
+		2FA2896C15E9B4C54DBEB009 /* TBasicRealmModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TBasicRealmModel.swift; sourceTree = "<group>"; };
+		2FA28EB8E002A0D9B3C768F1 /* TDispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TDispatch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +95,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				071244D91EC2660E00714AB1 /* ObjectMapper.framework in Frameworks */,
+				07C392401EC7AF4500830FD0 /* RealmSwift.framework in Frameworks */,
+				07C392381EC7AA7400830FD0 /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,13 +133,13 @@
 		071244601EC256C300714AB1 /* TLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				071244D21EC2627C00714AB1 /* Foundition */,
+				071244CF1EC2623900714AB1 /* Data */,
 				07C391F01EC75B1400830FD0 /* 3rd */,
 				07C392341EC7949900830FD0 /* ViewController */,
-				071244D21EC2627C00714AB1 /* Foundition */,
 				071244CE1EC2620D00714AB1 /* TableView */,
 				071244D01EC2624200714AB1 /* Networking */,
 				071244D11EC2625300714AB1 /* View */,
-				071244CF1EC2623900714AB1 /* Data */,
 				071244CD1EC261F200714AB1 /* Data Structure */,
 				071244611EC256C300714AB1 /* TLibrary.h */,
 				071244621EC256C300714AB1 /* Info.plist */,
@@ -147,6 +159,8 @@
 		071244941EC25BD900714AB1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				07C3923F1EC7AF4500830FD0 /* RealmSwift.framework */,
+				07C392371EC7AA7400830FD0 /* Realm.framework */,
 				071244D81EC2660E00714AB1 /* ObjectMapper.framework */,
 				071244D61EC2660600714AB1 /* XCTest.framework */,
 				071244951EC25BD900714AB1 /* ObjectMapper.framework */,
@@ -178,6 +192,8 @@
 			isa = PBXGroup;
 			children = (
 				071244791EC257BE00714AB1 /* TBundleFile.swift */,
+				07D17ABB1EC82F6C0053C7C4 /* TRealm.swift */,
+				2FA2896C15E9B4C54DBEB009 /* TBasicRealmModel.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -211,6 +227,7 @@
 				0792C6081EC640D000819CD3 /* TAssociatedObject.swift */,
 				0792C60A1EC6449400819CD3 /* TMethodChain.swift */,
 				0792C60C1EC70DB100819CD3 /* TAny.swift */,
+				2FA28EB8E002A0D9B3C768F1 /* TDispatch.swift */,
 			);
 			name = Foundition;
 			sourceTree = "<group>";
@@ -348,6 +365,7 @@
 				071244911EC257BE00714AB1 /* TBasicTableCell.swift in Sources */,
 				071244901EC257BE00714AB1 /* TStack.swift in Sources */,
 				0792C60D1EC70DB100819CD3 /* TAny.swift in Sources */,
+				07D17ABC1EC82F6C0053C7C4 /* TRealm.swift in Sources */,
 				071244871EC257BE00714AB1 /* TBundleFile.swift in Sources */,
 				071244861EC257BE00714AB1 /* TBasicTableRowModel.swift in Sources */,
 				0712448C1EC257BE00714AB1 /* THttp.swift in Sources */,
@@ -365,6 +383,8 @@
 				07C392361EC794B000830FD0 /* TTabbar.swift in Sources */,
 				0712448F1EC257BE00714AB1 /* TSegue.swift in Sources */,
 				0792C6071EC6122B00819CD3 /* TEventEmitter.swift in Sources */,
+				2FA287045C5DC28DEA00C44F /* TBasicRealmModel.swift in Sources */,
+				2FA28112B99F41A494D44788 /* TDispatch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

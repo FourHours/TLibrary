@@ -11,6 +11,7 @@ import Foundation
 public enum TAny {
     case Int(Int)
     case String(String)
+    case RealmModel([TBasicRealmModel])
     case TableModel(TTableModel)
     case TableRowModel(TTableRowModel)
     case Font(UIFont)
@@ -20,7 +21,18 @@ public enum TAny {
     case Dictionary([String: TAny])
     case ViewController(UIViewController)
     case Empty
-    
+
+
+
+    public func realmModel() -> [TBasicRealmModel] {
+        if case let TAny.RealmModel(value) = self {
+            return value
+        }
+        else {
+            return [TBasicRealmModel]()
+        }
+    }
+
     public func viewController() -> UIViewController {
         if case let TAny.ViewController(value) = self {
             return value
@@ -112,6 +124,25 @@ public enum TAny {
             return TBackendError.noError
         }
     }
-    
 
+}
+
+
+extension TAny: ExpressibleByStringLiteral {
+    public typealias UnicodeScalarLiteralType = StringLiteralType
+    
+    public init(stringLiteral value: StringLiteralType) {
+        self = .String(value)
+    }
+    
+    public init(unicodeScalarLiteral value: UnicodeScalarLiteralType) {
+        self.init(stringLiteral: value)
+    }
+    
+    public typealias ExtendedGraphemeClusterLiteralType = StringLiteralType
+    public init(extendedGraphemeClusterLiteral value: ExtendedGraphemeClusterLiteralType) {
+        self.init(stringLiteral: value)
+    }
+
+    // the existing String-based initializer from above remains here
 }

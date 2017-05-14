@@ -19,7 +19,7 @@ public struct TSectionModel {
     }
     
     var title: String
-    var rows: [Mappable]
+    var rows: [TTableRowModel]
     
     public func numberOfRows() -> Int {
         return rows.count
@@ -109,7 +109,11 @@ public final class TUITableView: UITableView, TEventEmitter, TMethodChain {
         self.delegate = self
         
         // Validated
-        let cellType = UITableView.TableCellType(rawValue: (properties[UITableView.PropertyName.cellType]!.int()))!
+        var cellType = UITableView.TableCellType.Value1
+        if let type = properties[UITableView.PropertyName.cellType] {
+            cellType = UITableView.TableCellType(rawValue: type.int())!
+
+        }
         let cellItentifierName = properties[UITableView.PropertyName.cellClassName]!.string()
 
         switch cellType {
@@ -118,9 +122,7 @@ public final class TUITableView: UITableView, TEventEmitter, TMethodChain {
         case .Nib:
             if let name = properties[UITableView.PropertyName.cellClassName]?.string() {
                 self.register(UINib(nibName: name, bundle: nil), forCellReuseIdentifier: name)
-
             }
-            
         default: break
         }
         
