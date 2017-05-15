@@ -57,20 +57,3 @@ public extension TEventEmitter {
     }
 }
 
-
-/*
- 
- class Dog: TEventEmitter {
- func bark() {
- emit(event: "bark", data: [1,4])
- }
- }
- 
- 
- var dog = Dog()
- dog.on(event: "bark") { (data) in
- print(data)
- }
- 
- dog.bark()
- */

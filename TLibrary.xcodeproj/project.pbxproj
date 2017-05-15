@@ -25,6 +25,8 @@
 		071244921EC257BE00714AB1 /* TTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071244841EC257BE00714AB1 /* TTableView.swift */; };
 		071244931EC257BE00714AB1 /* TView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071244851EC257BE00714AB1 /* TView.swift */; };
 		071244D91EC2660E00714AB1 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071244D81EC2660E00714AB1 /* ObjectMapper.framework */; };
+		075249F11EC8FE4100935CC3 /* TAutoIncretmentInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075249F01EC8FE4100935CC3 /* TAutoIncretmentInt.swift */; };
+		0759F9851EC9F2780014F878 /* DAExpandAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0759F9841EC9F2780014F878 /* DAExpandAnimation.swift */; };
 		0792C6051EC27A5700819CD3 /* TButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0792C6041EC27A5700819CD3 /* TButton.swift */; };
 		0792C6071EC6122B00819CD3 /* TEventEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0792C6061EC6122B00819CD3 /* TEventEmitter.swift */; };
 		0792C6091EC640D000819CD3 /* TAssociatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0792C6081EC640D000819CD3 /* TAssociatedObject.swift */; };
@@ -74,6 +76,8 @@
 		071244951EC25BD900714AB1 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = Carthage/Build/iOS/ObjectMapper.framework; sourceTree = "<group>"; };
 		071244D61EC2660600714AB1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		071244D81EC2660E00714AB1 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = ../iOS/ObjectMapper.framework; sourceTree = "<group>"; };
+		075249F01EC8FE4100935CC3 /* TAutoIncretmentInt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAutoIncretmentInt.swift; sourceTree = "<group>"; };
+		0759F9841EC9F2780014F878 /* DAExpandAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAExpandAnimation.swift; sourceTree = "<group>"; };
 		0792C6041EC27A5700819CD3 /* TButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TButton.swift; sourceTree = "<group>"; };
 		0792C6061EC6122B00819CD3 /* TEventEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEventEmitter.swift; sourceTree = "<group>"; };
 		0792C6081EC640D000819CD3 /* TAssociatedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAssociatedObject.swift; sourceTree = "<group>"; };
@@ -194,6 +198,7 @@
 				071244791EC257BE00714AB1 /* TBundleFile.swift */,
 				07D17ABB1EC82F6C0053C7C4 /* TRealm.swift */,
 				2FA2896C15E9B4C54DBEB009 /* TBasicRealmModel.swift */,
+				075249F01EC8FE4100935CC3 /* TAutoIncretmentInt.swift */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -224,10 +229,10 @@
 			isa = PBXGroup;
 			children = (
 				0792C6061EC6122B00819CD3 /* TEventEmitter.swift */,
-				0792C6081EC640D000819CD3 /* TAssociatedObject.swift */,
-				0792C60A1EC6449400819CD3 /* TMethodChain.swift */,
 				0792C60C1EC70DB100819CD3 /* TAny.swift */,
+				0792C60A1EC6449400819CD3 /* TMethodChain.swift */,
 				2FA28EB8E002A0D9B3C768F1 /* TDispatch.swift */,
+				0792C6081EC640D000819CD3 /* TAssociatedObject.swift */,
 			);
 			name = Foundition;
 			sourceTree = "<group>";
@@ -235,6 +240,7 @@
 		07C391F01EC75B1400830FD0 /* 3rd */ = {
 			isa = PBXGroup;
 			children = (
+				0759F9841EC9F2780014F878 /* DAExpandAnimation.swift */,
 				07C392301EC77E8C00830FD0 /* AZTabBarController.swift */,
 				07C391EE1EC75B0900830FD0 /* SwiftyJSON.swift */,
 			);
@@ -378,6 +384,7 @@
 				071244891EC257BE00714AB1 /* TCustomTableViewCell.swift in Sources */,
 				07C392311EC77E8C00830FD0 /* AZTabBarController.swift in Sources */,
 				0792C60B1EC6449400819CD3 /* TMethodChain.swift in Sources */,
+				0759F9851EC9F2780014F878 /* DAExpandAnimation.swift in Sources */,
 				0792C6051EC27A5700819CD3 /* TButton.swift in Sources */,
 				0792C6091EC640D000819CD3 /* TAssociatedObject.swift in Sources */,
 				07C392361EC794B000830FD0 /* TTabbar.swift in Sources */,
@@ -385,6 +392,7 @@
 				0792C6071EC6122B00819CD3 /* TEventEmitter.swift in Sources */,
 				2FA287045C5DC28DEA00C44F /* TBasicRealmModel.swift in Sources */,
 				2FA28112B99F41A494D44788 /* TDispatch.swift in Sources */,
+				075249F11EC8FE4100935CC3 /* TAutoIncretmentInt.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

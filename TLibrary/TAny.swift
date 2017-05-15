@@ -8,31 +8,41 @@
 
 import Foundation
 
+
 public enum TAny {
     case Int(Int)
     case String(String)
-    case RealmModel([TBasicRealmModel])
-    case TableModel(TTableModel)
-    case TableRowModel(TTableRowModel)
+
+    case Array(Array<TAnyable>)
+    case Dictionary([String: TAny])
+    
     case Font(UIFont)
     case Color(UIColor)
     case Error(Error)
-    case Array(Array<TAny>)
-    case Dictionary([String: TAny])
+
     case ViewController(UIViewController)
+    
+    case RealmModel(TBasicRealmModel)
+    case TableModel(TTableModel)
+    case TableRowModel(TTableRowModel)
+    
     case Empty
+}
 
+public protocol TAnyable {
+    func asTAnyObject() -> TAny
+}
 
-
-    public func realmModel() -> [TBasicRealmModel] {
+public extension TAny {
+    public func realmModel() -> TBasicRealmModel {
         if case let TAny.RealmModel(value) = self {
             return value
         }
         else {
-            return [TBasicRealmModel]()
+            return TBasicRealmModel()
         }
     }
-
+    
     public func viewController() -> UIViewController {
         if case let TAny.ViewController(value) = self {
             return value
@@ -52,12 +62,12 @@ public enum TAny {
     }
     
     
-    public func array() -> Array<TAny> {
+    public func array() -> Array<TAnyable> {
         if case let TAny.Array(value) = self {
             return value
         }
         else {
-            return [TAny.Empty]
+            return []
         }
     }
     
@@ -97,7 +107,7 @@ public enum TAny {
             return TTableModel()
         }
     }
-
+    
     public func tableRowModel() -> TTableRowModel {
         if case let TAny.TableRowModel(value) = self {
             return value
@@ -106,7 +116,7 @@ public enum TAny {
             return TBasicTableRowModel(title: "empty", detailText: "empty")
         }
     }
-
+    
     public func font() -> UIFont {
         if case let TAny.Font(value) = self {
             return value
@@ -124,9 +134,59 @@ public enum TAny {
             return TBackendError.noError
         }
     }
-
 }
 
+
+
+extension Int: TAnyable {
+    public func asTAnyObject() -> TAny {
+        return TAny.Int(self)
+    }
+}
+
+extension String: TAnyable {
+    public func asTAnyObject() -> TAny {
+        return TAny.String(self)
+    }
+}
+
+extension Array: TAnyable {
+    public func asTAnyObject() -> TAny {
+        return TAny.Array(self as! Array<TAnyable>)
+    }
+}
+
+extension UIViewController: TAnyable {
+    public func asTAnyObject() -> TAny {
+        return TAny.ViewController(self)
+    }
+}
+
+extension UIFont: TAnyable {
+    public func asTAnyObject() -> TAny {
+        return TAny.Font(self)
+    }
+}
+
+extension UIColor: TAnyable {
+    public func asTAnyObject() -> TAny {
+        return TAny.Color(self)
+    }
+}
+
+extension Dictionary: TAnyable {
+    public func asTAnyObject() -> TAny {
+        return TAny.Dictionary(self as! [String : TAny])
+    }
+}
+
+/*
+extension Error: TAnyable {
+    public func asTAnyObject() -> TAny {
+        return TAny.Error(self)
+    }
+}
+*/
 
 extension TAny: ExpressibleByStringLiteral {
     public typealias UnicodeScalarLiteralType = StringLiteralType
@@ -143,6 +203,6 @@ extension TAny: ExpressibleByStringLiteral {
     public init(extendedGraphemeClusterLiteral value: ExtendedGraphemeClusterLiteralType) {
         self.init(stringLiteral: value)
     }
-
+    
     // the existing String-based initializer from above remains here
 }

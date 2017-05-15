@@ -15,6 +15,9 @@ public enum TColor {
     // 204, 76, 86
 
     public static let lightSkyBlue = UIColor(hue: 204/360.0, saturation: 76/100.0, brightness: 86/100.0, alpha: 1)
+    
+    public static let tableGroupBackground = UIColor(red: 239.0/255.0, green: 239.0/255.0, blue: 244.0/255, alpha: 1)
+    
 }
 
 public enum TFont {

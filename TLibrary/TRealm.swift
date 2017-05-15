@@ -18,6 +18,11 @@ public extension TRealm {
     public enum EventName {
         public static let onError = "onError"
         public static let onResponse = "onResponse"
+        
+        public static let toAdd = "toAdd"
+        public static let toUpdate = "toAdd"
+        public static let toDelete = "toAdd"
+
 
         
     }
@@ -32,6 +37,25 @@ public final class TRealm: TEventEmitter {
     public static let sharedInstance = TRealm()
 
     private init() {
+        self.on(TRealm.EventName.toAdd) { (realmModels) in
+            
+            let realm = try! Realm()
+            
+            try! realm.write {
+                realmModels.array().forEach({ (anyableObject) in
+                    realm.add(anyableObject.asTAnyObject().realmModel())
+                })
+            }
+
+            print("toAdd Finished")
+        }
+            .on(TRealm.EventName.toUpdate) { (object) in
+                print("toUpdate \(object)")
+        }
+            .on(TRealm.EventName.toDelete) { (object) in
+                print("toDelete \(object)")
+        }
+        .end()
     }
 
     public func config(versionMumber: Int) {
@@ -70,7 +94,7 @@ public final class TRealm: TEventEmitter {
                 return model as! TBasicRealmModel
             })
 
-            self.emit(TRealm.EventName.onResponse, data: TAny.RealmModel(objectList))
+            self.emit(TRealm.EventName.onResponse, data: TAny.Array(objectList))
         }
 
     }

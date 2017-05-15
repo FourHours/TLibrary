@@ -50,18 +50,18 @@ public final class TTabBar: TEventEmitter, TMethodChain {
         
         //2.
         if let nIcons = properties[TTabBar.PropertyName.icons] {
-            nomarlIcons =  nIcons.array().map({ $0.string() })
+            nomarlIcons =  nIcons.array().map({ $0.asTAnyObject().string() })
         }
         
         if let hIcons = properties[TTabBar.PropertyName.selectedIcons] {
-            highlightedIcons =  hIcons.array().map({ $0.string() })
+            highlightedIcons =  hIcons.array().map({ $0.asTAnyObject().string() })
         }
         assert(nomarlIcons.count > 0 && nomarlIcons.count == highlightedIcons.count)
 
         //3.
         
         if let vcs = properties[TTabBar.PropertyName.viewControllers] {
-            viewControllers = vcs.array().map({ $0.viewController() })
+            viewControllers = vcs.array().map({ $0.asTAnyObject().viewController() })
         }
         assert(nomarlIcons.count == viewControllers.count)
         

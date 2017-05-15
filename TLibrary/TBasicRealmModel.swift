@@ -16,3 +16,9 @@ open class TBasicRealmModel: Object {
     }
 
 }
+
+extension TBasicRealmModel: TAnyable {
+    public func asTAnyObject() -> TAny {
+        return TAny.RealmModel(self)
+    }
+}

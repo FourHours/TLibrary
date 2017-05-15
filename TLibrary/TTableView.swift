@@ -108,7 +108,7 @@ public final class TUITableView: UITableView, TEventEmitter, TMethodChain {
         self.dataSource = self
         self.delegate = self
         
-        // Validated
+        //1. Validated
         var cellType = UITableView.TableCellType.Value1
         if let type = properties[UITableView.PropertyName.cellType] {
             cellType = UITableView.TableCellType(rawValue: type.int())!
@@ -125,6 +125,22 @@ public final class TUITableView: UITableView, TEventEmitter, TMethodChain {
             }
         default: break
         }
+        
+        //2. self sizing
+        self.rowHeight = UITableViewAutomaticDimension
+        self.estimatedRowHeight = 100.0
+        
+        //3. rounded corner
+
+        self.layer.cornerRadius = 5.0
+        self.layer.borderWidth = 0.5
+        self.layer.borderColor = TColor.tableGroupBackground.cgColor
+        
+//        [[[self tableView] layer] setCornerRadius:5.0f];
+//        
+//        [[[self tableView] layer] setBorderWidth:0.5f];
+//        
+//        [[[self tableView] layer] setBorderColor:[[UIColor redColor] CGColor]];
         
     }
 }
@@ -156,6 +172,28 @@ extension TUITableView: UITableViewDataSource {
             cell.configure(row: tableModel[indexPath])
             return cell as! UITableViewCell
         }
+    }
+    
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 1.0
+    }
+    
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 11))
+        footerView.backgroundColor = UIColor.clear
+        
+        return footerView
+    }
+    
+    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 10))
+        footerView.backgroundColor = UIColor.clear
+        
+        return footerView
+    }
+    
+    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 10.0
     }
 }
 
