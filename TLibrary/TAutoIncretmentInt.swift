@@ -8,12 +8,31 @@
 
 import Foundation
 
+public extension TAutoIncretmentInt {
+    public static let key = "TAutoIncretmentInt"
+}
+
 public struct TAutoIncretmentInt {
-    func getNewInt() -> Int {
-        return 0
+    public static let sharedInstance = TAutoIncretmentInt()
+    
+    private init() {}
+
+    public func getNewInt() -> Int {
+
+        let defaults = UserDefaults.standard
+        var value = defaults.integer(forKey: TAutoIncretmentInt.key)
+        
+        if value == 0 {
+            value = 100
+        }
+        self.reset(baseValue: value + 1)
+        
+        return value
     }
     
-    func reset(baseValue: Int) {
-        
+    public func reset(baseValue: Int) {
+        let defaults = UserDefaults.standard
+        defaults.set(baseValue, forKey: TAutoIncretmentInt.key)
+        defaults.synchronize()
     }
 }
