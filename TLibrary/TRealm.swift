@@ -89,8 +89,11 @@ public final class TRealm: TEventEmitter {
         TDispatch.sharedInstance.async {
             let realm = try! Realm()
             
-            let objectList: [TBasicRealmModel] = realm.objects(type).map({ model in
-                return model as! TBasicRealmModel
+            let objectList: [String] = realm.objects(type).map({ model in
+                
+                let m = model as! TBasicRealmModel
+                
+                return m.asTAnyObject().realmModel().content
             })
             
             self.emit(TRealm.EventName.onResponse, data: TAny.Array(objectList))

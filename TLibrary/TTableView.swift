@@ -72,6 +72,7 @@ public extension UITableView {
     
     public enum EventName {
         public static let onSelection = "onSelection"
+        public static let onDataSourceUpdate = "onDataSourceUpdate"
 
     }
     public enum TableCellType: Int {
@@ -101,7 +102,15 @@ public final class TUITableView: UITableView, TEventEmitter, TMethodChain {
 
     }
     
+    public func setModel(value: TAny) {
+        properties[TUITableView.PropertyName.dataSource] = value
+    }
+    
     public override func end() {
+        
+        guard let _ = properties[TUITableView.PropertyName.dataSource]
+            else {return}
+
         
         validate() //"Please call validate methoid first")
         

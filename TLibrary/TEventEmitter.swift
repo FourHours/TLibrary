@@ -46,20 +46,16 @@ public extension TEventEmitter {
         return self
     }
     
-    public func emitOnMainThread(_ event: String, data: TAny) {
-        if let handlers = events[event] {
-            handlers.forEach { handler in
-                TDispatch.sharedInstance.async {
-                    handler(data)
-                }
-            }
-        }
-    }
 
+    
+    
+    // All emits are on main queue
     public func emit(_ event: String, data: TAny) {
         if let handlers = events[event] {
             handlers.forEach { handler in
-                handler(data)
+                TDispatch.sharedInstance.asyncOnMainQueue {
+                    handler(data)
+                }
             }
         }
     }

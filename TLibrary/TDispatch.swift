@@ -17,5 +17,13 @@ public final class TDispatch: TEventEmitter {
             task()
         }
     }
+    
+    public func asyncOnMainQueue(task: @escaping ()-> Void ) {
+        DispatchQueue.main.async {
+            task()
+
+        }
+    }
+    
 
 }
