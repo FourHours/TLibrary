@@ -82,18 +82,17 @@ public final class TRealm: TEventEmitter {
 
     public func fetchAll<T: Object>(_ type: T.Type) {
         
-        do {
-            // public final class Results<T: Object>: NSObject, NSFastEnumeration
-            // https://realm.io/docs/swift/latest/api/Classes/Results.html
-            // Results<T>
+        // public final class Results<T: Object>: NSObject, NSFastEnumeration
+        // https://realm.io/docs/swift/latest/api/Classes/Results.html
+        // Results<T>
 
-
+        TDispatch.sharedInstance.async {
             let realm = try! Realm()
-
+            
             let objectList: [TBasicRealmModel] = realm.objects(type).map({ model in
                 return model as! TBasicRealmModel
             })
-
+            
             self.emit(TRealm.EventName.onResponse, data: TAny.Array(objectList))
         }
 

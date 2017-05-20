@@ -24,9 +24,9 @@
 		071244911EC257BE00714AB1 /* TBasicTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071244831EC257BE00714AB1 /* TBasicTableCell.swift */; };
 		071244921EC257BE00714AB1 /* TTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071244841EC257BE00714AB1 /* TTableView.swift */; };
 		071244931EC257BE00714AB1 /* TView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071244851EC257BE00714AB1 /* TView.swift */; };
-		071244D91EC2660E00714AB1 /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 071244D81EC2660E00714AB1 /* ObjectMapper.framework */; };
 		075249F11EC8FE4100935CC3 /* TAutoIncretmentInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075249F01EC8FE4100935CC3 /* TAutoIncretmentInt.swift */; };
 		0759F9851EC9F2780014F878 /* DAExpandAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0759F9841EC9F2780014F878 /* DAExpandAnimation.swift */; };
+		077DDEF21ECAF6CF006DCC36 /* TAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077DDEF11ECAF6CF006DCC36 /* TAnimation.swift */; };
 		0792C6051EC27A5700819CD3 /* TButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0792C6041EC27A5700819CD3 /* TButton.swift */; };
 		0792C6071EC6122B00819CD3 /* TEventEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0792C6061EC6122B00819CD3 /* TEventEmitter.swift */; };
 		0792C6091EC640D000819CD3 /* TAssociatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0792C6081EC640D000819CD3 /* TAssociatedObject.swift */; };
@@ -35,8 +35,6 @@
 		07C391EF1EC75B0900830FD0 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C391EE1EC75B0900830FD0 /* SwiftyJSON.swift */; };
 		07C392311EC77E8C00830FD0 /* AZTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C392301EC77E8C00830FD0 /* AZTabBarController.swift */; };
 		07C392361EC794B000830FD0 /* TTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C392351EC794B000830FD0 /* TTabbar.swift */; };
-		07C392381EC7AA7400830FD0 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07C392371EC7AA7400830FD0 /* Realm.framework */; };
-		07C392401EC7AF4500830FD0 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07C3923F1EC7AF4500830FD0 /* RealmSwift.framework */; };
 		07D17ABC1EC82F6C0053C7C4 /* TRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D17ABB1EC82F6C0053C7C4 /* TRealm.swift */; };
 		2FA28112B99F41A494D44788 /* TDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA28EB8E002A0D9B3C768F1 /* TDispatch.swift */; };
 		2FA287045C5DC28DEA00C44F /* TBasicRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA2896C15E9B4C54DBEB009 /* TBasicRealmModel.swift */; };
@@ -78,6 +76,7 @@
 		071244D81EC2660E00714AB1 /* ObjectMapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ObjectMapper.framework; path = ../iOS/ObjectMapper.framework; sourceTree = "<group>"; };
 		075249F01EC8FE4100935CC3 /* TAutoIncretmentInt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAutoIncretmentInt.swift; sourceTree = "<group>"; };
 		0759F9841EC9F2780014F878 /* DAExpandAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAExpandAnimation.swift; sourceTree = "<group>"; };
+		077DDEF11ECAF6CF006DCC36 /* TAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAnimation.swift; sourceTree = "<group>"; };
 		0792C6041EC27A5700819CD3 /* TButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TButton.swift; sourceTree = "<group>"; };
 		0792C6061EC6122B00819CD3 /* TEventEmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEventEmitter.swift; sourceTree = "<group>"; };
 		0792C6081EC640D000819CD3 /* TAssociatedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAssociatedObject.swift; sourceTree = "<group>"; };
@@ -98,9 +97,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				071244D91EC2660E00714AB1 /* ObjectMapper.framework in Frameworks */,
-				07C392401EC7AF4500830FD0 /* RealmSwift.framework in Frameworks */,
-				07C392381EC7AA7400830FD0 /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +229,7 @@
 				0792C60A1EC6449400819CD3 /* TMethodChain.swift */,
 				2FA28EB8E002A0D9B3C768F1 /* TDispatch.swift */,
 				0792C6081EC640D000819CD3 /* TAssociatedObject.swift */,
+				077DDEF11ECAF6CF006DCC36 /* TAnimation.swift */,
 			);
 			name = Foundition;
 			sourceTree = "<group>";
@@ -390,6 +387,7 @@
 				07C392361EC794B000830FD0 /* TTabbar.swift in Sources */,
 				0712448F1EC257BE00714AB1 /* TSegue.swift in Sources */,
 				0792C6071EC6122B00819CD3 /* TEventEmitter.swift in Sources */,
+				077DDEF21ECAF6CF006DCC36 /* TAnimation.swift in Sources */,
 				2FA287045C5DC28DEA00C44F /* TBasicRealmModel.swift in Sources */,
 				2FA28112B99F41A494D44788 /* TDispatch.swift in Sources */,
 				075249F11EC8FE4100935CC3 /* TAutoIncretmentInt.swift in Sources */,

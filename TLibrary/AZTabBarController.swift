@@ -145,7 +145,7 @@ public class AZTabBarController: UIViewController {
     ///   - icons: An array which contains the images of the icons that will be displayed as default.
     ///   - sIcons: An optional array which contains the images of the icons that will be displayed when the menu is selected.
     /// - Returns: The instance of AZTabBarController which was created.
-    open class func insert(into parent:UIViewController, withTabIcons icons: [UIImage],andSelectedIcons sIcons: [UIImage]? = nil)->AZTabBarController {
+    open class func insert(into parent:UIViewController, withTabIcons icons: [UIImage],andSelectedIcons sIcons: [UIImage]? = nil) -> AZTabBarController {
         let controller = AZTabBarController(withTabIcons: icons,highlightedIcons: sIcons)
         parent.addChildViewController(controller)
         parent.view.addSubview(controller.view)
@@ -159,7 +159,7 @@ public class AZTabBarController: UIViewController {
      */
     
     /// The color of icon in the tab bar when the menu is selected.
-    open var selectedColor:UIColor! {
+    open var selectedColor: UIColor! {
         didSet{
             updateInterfaceIfNeeded()
             if didSetUpInterface , let button = (buttons[self.selectedIndex] as? UIButton) {
@@ -170,7 +170,7 @@ public class AZTabBarController: UIViewController {
     
     
     /// The default icon color of the buttons in the tab bar.
-    open var defaultColor:UIColor! {
+    open var defaultColor: UIColor! {
         didSet{
             updateInterfaceIfNeeded()
             if didSetUpInterface , let button = (buttons[self.selectedIndex] as? UIButton) {
@@ -744,7 +744,7 @@ public class AZTabBarController: UIViewController {
             
             for i in 0 ..< self.tabIcons.count {
                 
-                let button:UIButton = self.createButton(forIndex: i)
+                let button: UIButton = self.createButton(forIndex: i)
                 
                 self.buttonsContainer.addSubview(button)
                 
@@ -757,7 +757,7 @@ public class AZTabBarController: UIViewController {
         self.buttonsContainer.backgroundColor = self.buttonsBackgroundColor != nil ? self.buttonsBackgroundColor : UIColor.lightGray
     }
     
-    private func customizeButtons(){
+    private func customizeButtons() {
         for i in 0 ..< self.tabIcons.count {
             let button:AZTabBarButton = self.buttons[i] as! AZTabBarButton
             
@@ -1083,46 +1083,46 @@ protocol AZTabBarButtonDelegate: class {
     /// Function used to decide if the TabBarButton should animate upon interaction.
     ///
     /// - Parameter tabBarButton: The sender.
-    func shouldAnimate(_ tabBarButton: AZTabBarButton)->Bool
+    func shouldAnimate(_ tabBarButton: AZTabBarButton) -> Bool
     
     
     /// The start animation duration.
     ///
     /// - Parameter tabBarButton: The sender.
-    func beginAnimationDuration(_ tabBarButton: AZTabBarButton)->TimeInterval
+    func beginAnimationDuration(_ tabBarButton: AZTabBarButton) -> TimeInterval
     
     
     /// The ending animation duration.
     ///
     /// - Parameter tabBarButton: The sender.
-    func endAnimationDuration(_ tabBarButton: AZTabBarButton)->TimeInterval
+    func endAnimationDuration(_ tabBarButton: AZTabBarButton) -> TimeInterval
     
     
     /// The initial Spring Velocity for the ending animation.
     ///
     /// - Parameter tabBarButton: The sender.
-    func initialSpringVelocity(_ tabBarButton: AZTabBarButton)->CGFloat
+    func initialSpringVelocity(_ tabBarButton: AZTabBarButton) -> CGFloat
     
     
     /// The Spring Damping value.
     ///
     /// - Parameter tabBarButton: The sender.
     /// - Returns: The value of the damping
-    func usingSpringWithDamping(_ tabBarButton: AZTabBarButton)->CGFloat
+    func usingSpringWithDamping(_ tabBarButton: AZTabBarButton) -> CGFloat
     
     
     /// Function used to decide if the action of the button can be triggered using a long click gesture.
     ///
     /// - Parameter tabBarButton: The sender.
     /// - Returns: True if you wish to enable long-click-gesture for the button.
-    func shouldLongClick(_ tabBarButton: AZTabBarButton)->Bool
+    func shouldLongClick(_ tabBarButton: AZTabBarButton) -> Bool
     
     
     /// Set the duration that takes for the long click gesture to be triggered.
     ///
     /// - Parameter tabBarButton: The sender.
     /// - Returns: The duration that takes for the long click gesture to be triggered.
-    func longClickTriggerDuration(_ tabBarButton: AZTabBarButton)-> TimeInterval
+    func longClickTriggerDuration(_ tabBarButton: AZTabBarButton) -> TimeInterval
     
     
     /// A function that is invoked when long-click gesture occurs.
@@ -1137,7 +1137,7 @@ class AZTabBarButton: UIButton{
     
     open weak var delegate:AZTabBarButtonDelegate!
     
-    open var shouldAnimateInteraction:Bool {
+    open var shouldAnimateInteraction: Bool {
         get{
             return delegate.shouldAnimate(self)
         }

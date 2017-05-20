@@ -26,7 +26,7 @@ public final class TUIView: UIView, TMethodChain {
     }
 
     
-    public func end() {
+    public override func end() {
         
     }
 

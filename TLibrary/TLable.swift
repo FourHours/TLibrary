@@ -27,7 +27,7 @@ public final class TUILabel: UILabel, TMethodChain {
     }
 
     
-    public func end() {
+    public override func end() {
         for(key, value) in properties {
             switch key {
             case UILabel.PropertyName.textColor:

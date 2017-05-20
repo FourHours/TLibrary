@@ -101,7 +101,7 @@ public final class TUITableView: UITableView, TEventEmitter, TMethodChain {
 
     }
     
-    public func end() {
+    public override func end() {
         
         validate() //"Please call validate methoid first")
         

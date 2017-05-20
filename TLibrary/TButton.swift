@@ -45,7 +45,7 @@ public final class TUIButton: UIButton, TMethodChain, TEventEmitter {
     }
 
     
-    public func end() {
+    public override func end() {
         addTarget(self, action: #selector(self.onClick), for: UIControlEvents.touchUpInside)
     }
     
