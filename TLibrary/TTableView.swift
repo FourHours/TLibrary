@@ -82,8 +82,14 @@ public extension UITableView {
     }
 }
 
+
+
 public final class TUITableView: UITableView, TEventEmitter, TMethodChain {
-    var tableModel = TTableModel()
+    public var tableModel: TTableModel = TTableModel() { // React State :)
+        didSet {
+            self.reloadData()
+        }
+    }
     
     public func validate() {
         //1. datasource
